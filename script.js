@@ -1,5 +1,6 @@
 var possibleCharacters = [];
 var generatedPassword = [];
+//array of special characters that can be included in password.
 var specialCharacters = [
     '@',
     '%',
@@ -25,9 +26,9 @@ var specialCharacters = [
     '_',
     '.'
 ];
-// Array of numeric characters to be included in password
+// array of numeric characters to be included in password
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-// Array of lowercase characters to be included in password
+// array of lowercase characters to be included in password
 var lowerCasedCharacters = [
     'a',
     'b',
@@ -56,7 +57,7 @@ var lowerCasedCharacters = [
     'y',
     'z'
 ];
-// Array of uppercase characters to be included in password
+// array of uppercase characters to be included in password
 var upperCasedCharacters = [
     'A',
     'B',
@@ -86,10 +87,12 @@ var upperCasedCharacters = [
     'Z'
 ];
 
-// Creates a prompt box which takes in text input.
-function promptPW() {
+// creates a prompt box which takes in text input.
 
-    var pwLength = prompt("Please enter a password length between 8 & 128 characters:");
+var pwLength = prompt("Please enter a password length between 8 & 128 characters:");
+
+// password criteria prompts
+function generatePassword() {  
 
     var charLow = confirm("Does your password need to include lowercase characters?");
 
@@ -98,6 +101,7 @@ function promptPW() {
     var charNum = confirm("Does your password need to include numerical characters?");
 
     var charSym = confirm("Does your password need to include special characters?");
+
 // Conditional statement to check if user does not include any types of characters. Password generator ends if all four variables evaluate to false
 
 if (
@@ -111,13 +115,14 @@ if (
     return;
 }
  //Returns user to first prompt if they say 'no/cancel' to all character type selections. 
+
  if(!charCap && !charLow && !charNum && !charSym){
     alert("You must select at least one type of character to use in your password!")
   }
 }
 // Function for getting a random element from an array
 
-function randomChar() {
+function generatePassword() {
     if (charCap){
         possibleCharacters= possibleCharacters.concat(upperCasedCharacters)
        }
@@ -133,6 +138,13 @@ function randomChar() {
      
        console.log(possibleCharacters)
 
+       for(i=0;i<(+(pwdLength));i++){
+        generatedPassword.push(possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)])
+      }
+    
+      console.log(generatedPassword)
+    
+    return generatedPassword.join("")
 }
 
 // Assignment Code
